@@ -1,0 +1,32 @@
+/* .mboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+} */
+
+/* Plateau de jeu */
+.mboard {
+  border: 1px solid purple;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+  align-content: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre */
+  margin: 20px auto;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .mboard {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .mboard {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

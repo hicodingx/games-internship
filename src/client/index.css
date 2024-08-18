@@ -1,0 +1,128 @@
+/*--------------------------*\
+  #index.css
+\*---------------------------*/
+
+/**
+* copywrite 2024 HiCodingX
+*/
+
+/*--------------------------*\
+  #CUSTOM PROPERTY
+\*---------------------------*/
+
+/*--------------------------*\
+  #RESET
+\*---------------------------*/
+
+@import url("./utils/variable.css");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a,
+img,
+svg,
+span,
+input,
+select,
+button,
+textarea,
+ion-icon,
+.icon {
+  display: block;
+}
+
+img {
+  height: auto;
+}
+
+input,
+textarea,
+select,
+button {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+.icon,
+svg {
+  pointer-events: none;
+}
+
+address {
+  font-style: normal;
+}
+
+html {
+  font-family: var(--ff-roboto), sans-serif;
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+  color: var(--sonic-silver);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  /* overflow-x: hidden; */
+}
+
+/* body.active {
+  overflow: hidden;
+} */
+
+:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Style for the text selcted by the user */
+
+::selection {
+  background-color: var(--deep-saffron);
+  color: var(--white);
+}
+/* end of the style  */
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+  border-left: 1px solid var(--cultured);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(0, 0%, 80%);
+  border: 3px solid var(--white);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(0, 0%, 70%);
+}
