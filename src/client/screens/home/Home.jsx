@@ -62,11 +62,15 @@ export default function Home() {
 
           <div ref={ref} className="dyn-desc">
             <Typewriter
+              options={{
+                cursorClassName: "typing-curson",
+                wrapperClassName: "typing-wrapper",
+              }}
               onInit={(typewriter) => {
                 typewriter
-                  .pauseFor(500)
-                  .typeString("Bienvenue sur notre platforme de divertissement")
                   .pauseFor(300)
+                  .typeString("Bienvenue sur notre platforme de divertissement")
+                  .pauseFor(250)
                   .deleteAll(10)
                   .typeString(
                     '<p style="color: #27ae60;  fontSize: 24; font-weight: 600" > Jouer ici des jeux qui entraînent votre mémoire, </p>'
@@ -74,7 +78,7 @@ export default function Home() {
                   .typeString(
                     '<p> Je suis <span style="color: coral;"> Hippolyte Avoce</span> et je serai votre <span style="color: #27ae60; display: inline-block;">adversaire </span>  </p>'
                   )
-                  .pauseFor(1000)
+                  .pauseFor(500)
                   .start();
               }}
             />
