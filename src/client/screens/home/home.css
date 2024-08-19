@@ -74,6 +74,14 @@ h1 {
   gap: 30px;
 }
 
+.dyn-desc {
+  font-size: 1.3rem;
+
+  margin-bottom: 15px;
+  padding: 10px 30px;
+  text-align: center;
+}
+
 .desktop-side-gif {
   display: none;
 }

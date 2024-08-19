@@ -91,6 +91,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* complément de code */
+  z-index: 100;
 }
 
 .message-container {
@@ -103,6 +105,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* Complément */
+  width: 90%;
+}
+
+@media (min-width: 570px) {
+  .message-container {
+    max-width: 400px;
+  }
 }
 
 .message {

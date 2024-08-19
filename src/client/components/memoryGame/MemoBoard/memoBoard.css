@@ -9,6 +9,8 @@
 /* Plateau de jeu */
 .mboard {
   border: 1px solid purple;
+  width: 100%;
+  overflow: hidden;
   border-radius: 15px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

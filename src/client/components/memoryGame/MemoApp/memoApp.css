@@ -48,11 +48,36 @@
   background-color: #ff867c;
 }
 
+/* timer */
+
+.time-counter-container p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: gray;
+}
+.time-counter-container p.ending {
+  color: rgba(255, 0, 0, 0.651);
+}
+
 .play-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-width: 100%;
+}
+
+.difficulty-selector.memo {
+  display: flex;
+  align-items: end;
+  justify-content: space-around;
+  text-align: none;
+  min-width: 100%;
+}
+
+.difficulty-selector.memo select {
+  max-width: max-content;
+  border-color: grey;
+  border-width: 0.5px;
 }
 
 label {
@@ -68,21 +93,48 @@ select {
   border: 2px solid #4a4a4a;
 }
 
+.launch-btn-container .launch {
+  background-color: rgba(12, 90, 12, 0.644);
+}
+
+.launch-btn-container .launch.disabled {
+  /* background-color: rgba(12, 90, 12, 0.644); */
+  background-color: #e0e0e0;
+
+  cursor: not-allowed;
+}
+
+.launch-btn-container .launch.disabled:hover {
+  background-color: #e0e0e0;
+}
+
 /* Styles pour la section des contrôles (redémarrer le jeu, difficulté, score) */
 
 /* Styles pour l'affichage du score */
 .score {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border: 1px dotted coral;
+  padding: 5px;
   border-radius: 10px;
 }
 
 .score p {
-  margin: 5px 0;
-  font-size: 18px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.reset-button.memo {
+  font-size: 1.1rem;
+  color: white;
+  padding: 3px 8px;
+  margin-top: 0;
+}
+
+.reset-button.memo.disabled {
+  background-color: #e0e0e0;
+
+  cursor: not-allowed;
+}
+.reset-button.memo.disabled:hover {
+  background-color: #e0e0e0;
 }
 
 /* Styles pour l'overlay qui apparaît lorsque le jeu est terminé ou que le temps est écoulé */
@@ -117,4 +169,15 @@ select {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.replay-end-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+}
+
+.replay-end-container .end {
+  background-color: grey;
 }
