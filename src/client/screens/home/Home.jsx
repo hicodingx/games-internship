@@ -5,8 +5,13 @@ import { IoPlayForward } from "react-icons/io5";
 
 import Modal from "../../components/modal/Modal";
 import { useNavigate } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
+import Typewriter from "typewriter-effect";
 
 export default function Home() {
+  const { ref, inView, entry } = useInView({
+    threshold: 0.5,
+  });
   const navigate = useNavigate();
   // useEffect(() => {
   //   // Créer des éléments pour l'animation
@@ -53,6 +58,26 @@ export default function Home() {
                 <IoPlayForward size={20} />
               </div>
             </button>
+          </div>
+
+          <div ref={ref} className="dyn-desc">
+            <Typewriter
+              onInit={(typewriter) => {
+                typewriter
+                  .pauseFor(500)
+                  .typeString("Bienvenue sur notre platforme de divertissement")
+                  .pauseFor(300)
+                  .deleteAll(10)
+                  .typeString(
+                    '<p style="color: #27ae60;  fontSize: 24; font-weight: 600" > Jouer ici des jeux qui entraînent votre mémoire, </p>'
+                  )
+                  .typeString(
+                    '<p> Je suis <span style="color: coral;"> Hippolyte Avoce</span> et je serai votre <span style="color: #27ae60; display: inline-block;">adversaire </span>  </p>'
+                  )
+                  .pauseFor(1000)
+                  .start();
+              }}
+            />
           </div>
         </div>
 

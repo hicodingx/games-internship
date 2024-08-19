@@ -57,6 +57,12 @@ function Cards() {
             <p className="title">Let your imagination run wild</p>
           </div>
         </div>
+        <div className="card second">
+          <div className="card-content">
+            <p className="tagline">For Everyone</p>
+            <p className="title">Let your imagination run wild</p>
+          </div>
+        </div>
       </Carousel>
 
       {/* <div className="card">

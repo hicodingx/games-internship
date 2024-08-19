@@ -11,10 +11,15 @@ function MemoApp() {
   const [isGameOver, setIsGameOver] = useState(false);
   const [difficulty, setDifficulty] = useState(4);
   const [isTimeUp, setIsTimeUp] = useState(false); // État pour vérifier si le temps est écoulé
+  const [isStarted, setIsStarted] = useState(false);
+  const [end, setEnd] = useState(false);
 
-  useEffect(() => {
-    initializeGame();
-  }, [difficulty]);
+  // useEffect(() => {
+  //   const processGame = () => {
+  //     initializeGame();
+  //   };
+  //   isStarted && processGame;
+  // }, [isStarted]);
 
   useEffect(() => {
     if (flippedIndices.length === 2) {
@@ -29,18 +34,26 @@ function MemoApp() {
     }
   }, [flippedIndices]);
 
+  useEffect(() => {
+    initializeGame(); // Initialize the game on component mount
+  }, [difficulty]);
+
   // Gestion du chronomètre par décrémentation
   useEffect(() => {
     let timer;
-    if (time > 0 && !isGameOver && !isTimeUp) {
+    if (isStarted && time > 0 && !isGameOver) {
       // Le temps décrémente tant qu'il n'est pas écoulé, que le jeu n'est pas terminé, et que le temps n'est pas épuisé
-      timer = setInterval(() => setTime(time - 1), 1000);
-    } else if (time === 0 && !isGameOver && !isTimeUp) {
+      timer = setInterval(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
+    } else if (isStarted && time === 0 && !isGameOver) {
       // Si le temps est écoulé, on déclenche la fin du jeu
       handleTimeUp();
     }
     return () => clearInterval(timer); // Nettoyage du timer pour éviter des bugs
-  }, [time, isGameOver, isTimeUp]);
+  }, [time, isStarted, isGameOver]);
+
+  // console.log(`timer => ${time}, game =>${isGameOver}, issta => ${isStarted}`);
 
   const handleWin = () => {
     const winAudio = new Audio("/2363.mp3"); // Remplace par le chemin vers ton fichier son de victoire
@@ -60,13 +73,14 @@ function MemoApp() {
     const cardSet = [...selectedSymbols, ...selectedSymbols].sort(
       () => Math.random() - 0.5
     );
+    setEnd(false);
     setCards(cardSet);
     setFlippedIndices([]);
     setMatchedIndices([]);
     setMoves(0);
     setIsGameOver(false);
-    setIsTimeUp(false); // Réinitialise l'état d'expiration du temps
-    setTime(difficulty * 15); // Le temps dépend du niveau de difficulté (par exemple, 4 * 30 = 120 secondes)
+    setIsTimeUp(false); // Réinitialisation de `isTimeUp` à `false`
+    setTime(difficulty * 1); // Temps dépendant du niveau de difficulté
   };
 
   const handleCardClick = (index) => {
@@ -85,17 +99,63 @@ function MemoApp() {
   // Fonction appelée lorsque le temps est écoulé
   const handleTimeUp = () => {
     setIsTimeUp(true);
+    setIsStarted(false);
     const audio = new Audio("/1313.mp3"); // Remplace par le chemin vers ton fichier son
     audio.play(); // Joue le signal sonore lorsque le temps est épuisé
   };
 
+  // Fonction de redémarrage du jeu
   const handleRestart = () => {
-    initializeGame();
+    initializeGame(); // Réinitialise le jeu
   };
 
   // Gestion du changement de difficulté
   const handleChangeDifficulty = (e) => {
     setDifficulty(Number(e.target.value));
+    // initializeGame(); // Réinitialise le jeu avec la nouvelle difficulté
+  };
+
+  const handleStart = () => {
+    setIsStarted(true);
+    // initializeGame();
+  };
+
+  const Overlay = () => {
+    if ((isGameOver || isTimeUp) && !end) {
+      return (
+        <div className="overlay">
+          <div className="message-container">
+            {isGameOver ? (
+              <div className="message">Félicitation!, vous avez gagné</div>
+            ) : (
+              <div className="message">Perdu!</div>
+            )}
+
+            {isGameOver ? (
+              <div className="end-img">
+                <img className="null-part" src="./gift.jpg" alt="" />
+              </div>
+            ) : (
+              <div className="end-img">
+                <img className="null-part" src="./sorry.gif" alt="" />
+              </div>
+            )}
+
+            {/* <button className="reset-button" onClick={resetGame}>
+                Réinitialiser
+              </button> */}
+            <div className="replay-end-container">
+              <button className="memo-play-btn" onClick={handleRestart}>
+                Play Again
+              </button>
+              <button className="memo-play-btn end" onClick={handleRestart}>
+                Terminer
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    } else return null;
   };
 
   return (
@@ -106,25 +166,32 @@ function MemoApp() {
       </header>
 
       <div className="memo-game-board">
+        <div className="time-counter-container">
+          <p>{time} s</p> {/* Affichage du temps restant */}
+        </div>
         <div className="play-info">
           <div className="score">
             <p>Moves: {moves}</p>
-            <p>Time: {time}s</p> {/* Affichage du temps restant */}
           </div>
 
-          <button className="reset-button" onClick={handleRestart}>
+          <button
+            className={`reset-button memo  ${isStarted ? "disabled" : ""}`}
+            onClick={handleRestart}
+            disabled={isStarted}
+          >
             Réinitialiser
           </button>
         </div>
 
         {/* Ajouter une sélection de difficulté ici */}
-        <div className="difficulty-selector">
+        <div className="difficulty-selector memo">
           <label htmlFor="difficulty">Niveau de Difficulté : </label>
           <select
             id="difficulty"
             value={difficulty}
             onChange={handleChangeDifficulty}
-            className={`difficulty-dropdown `}
+            disabled={isStarted}
+            className={`difficulty-dropdown ${isStarted ? "disabled" : ""}`}
           >
             <option value={4}>🍏 Facile</option>
             <option value={6}>🍊 Moyen</option>
@@ -132,23 +199,26 @@ function MemoApp() {
           </select>
         </div>
 
-        {(isGameOver || isTimeUp) && ( // Si le jeu est terminé ou si le temps est écoulé, afficher l'overlay
-          <div className="memo-overlay">
-            <div className="memo-overlay-content">
-              <h2>{isGameOver ? "You Won!" : "Time's Up!"}</h2>{" "}
-              {/* Affichage du message selon l'état */}
-              <button className="memo-play-btn" onClick={handleRestart}>
-                Play Again
-              </button>{" "}
-              {/* Bouton pour recommencer */}
-            </div>
-          </div>
-        )}
+        <div className="launch-btn-container">
+          <button
+            className={`reset-button memo launch ${
+              isStarted ? "disabled" : ""
+            }`}
+            onClick={handleStart}
+            disabled={isStarted}
+          >
+            Jouer
+          </button>
+        </div>
+
+        {/*  */}
+        <Overlay />
         <MemoBoard
           cards={cards}
           flippedIndices={flippedIndices}
           matchedIndices={matchedIndices}
           onCardClick={handleCardClick}
+          isStarted={isStarted} // Ajout de l'état isStarted
         />
       </div>
     </div>
