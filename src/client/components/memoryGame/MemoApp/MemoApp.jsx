@@ -56,6 +56,7 @@ function MemoApp() {
   // console.log(`timer => ${time}, game =>${isGameOver}, issta => ${isStarted}`);
 
   const handleWin = () => {
+    setIsStarted(false);
     const winAudio = new Audio("/2363.mp3"); // Remplace par le chemin vers ton fichier son de victoire
     winAudio.play(); // Joue le signal sonore lorsque le joueur gagne
   };
@@ -80,7 +81,7 @@ function MemoApp() {
     setMoves(0);
     setIsGameOver(false);
     setIsTimeUp(false); // Réinitialisation de `isTimeUp` à `false`
-    setTime(difficulty * 1); // Temps dépendant du niveau de difficulté
+    setTime(difficulty * 30); // Temps dépendant du niveau de difficulté
   };
 
   const handleCardClick = (index) => {

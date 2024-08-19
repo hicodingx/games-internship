@@ -2,17 +2,18 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { SiNintendogamecube } from "react-icons/si";
 import "./header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="site-header">
       <div className="header-main">
         <div className="container">
-          <a href="#" className="header-logo">
+          <Link to="/" className="header-logo">
             <div className="logo">
               <SiNintendogamecube className="header-logo-img icon" size={100} />
             </div>
-          </a>
+          </Link>
 
           <div className="header-search-container">
             <input

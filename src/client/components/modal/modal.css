@@ -13,7 +13,7 @@
   visibility: hidden;
   pointer-events: none;
   z-index: 10;
-  animation: popup 1s ease-in-out 5s forwards;
+  animation: popup 1s ease-in-out 10s forwards;
   /* Une animation est pareil à un useefceft hook  */
   /* qui s'auto overwrite les propriétés css */
 
