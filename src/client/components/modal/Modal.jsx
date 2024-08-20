@@ -41,7 +41,6 @@ const Modal = () => {
               id="email-id"
               className="email-field"
               placeholder="Email Address"
-              required
             />
 
             {/* <button type="submit" className="btn-newsletter">

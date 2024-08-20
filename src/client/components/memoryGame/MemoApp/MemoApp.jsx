@@ -81,7 +81,7 @@ function MemoApp() {
     setMoves(0);
     setIsGameOver(false);
     setIsTimeUp(false); // Réinitialisation de `isTimeUp` à `false`
-    setTime(difficulty * 30); // Temps dépendant du niveau de difficulté
+    setTime(difficulty * 8); // Temps dépendant du niveau de difficulté
   };
 
   const handleCardClick = (index) => {
