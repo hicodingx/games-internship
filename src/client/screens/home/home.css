@@ -131,7 +131,13 @@ h1 {
 
 @media (min-width: 970px) {
   .desktop-side-gif {
+    min-width: 50%;
     display: block;
+  }
+
+  .gif-container {
+    display: flex;
+    justify-content: center;
   }
 
   .h-container {

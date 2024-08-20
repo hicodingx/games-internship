@@ -67,7 +67,7 @@ function Footer() {
             Copyright &copy; 2024 <Link to="/">Anon</Link> all rights reserved.
           </p>
 
-          <div className="copyright owner">Hippolyte Belsius Avoce</div>
+          <div className="copyright owner">Nadège ATINDEHOU</div>
         </div>
       </div>
     </div>
