@@ -26,8 +26,21 @@ export default function Home() {
   //   }
   // }, []);
   return (
-    <div className="app-container">
-      <Modal />
+    <div className="app-container settings">
+      {/* Déactivation code  */}
+      <div className="settings-container">
+        <div className="setting-img-container">
+          <img className="setting-img" src="./rs.gif" alt="settings" />
+        </div>
+
+        <div className="setting-text">
+          L'ingénieur a mis cette platforme en maintenance temporaire.
+          <br />
+          La maintenance sera à terme dans quelques secondes.
+        </div>
+      </div>
+
+      {/* <Modal />
 
       <div className="h-container">
         <div className="ms-container">
@@ -104,9 +117,7 @@ export default function Home() {
             <IoPlayForward size={20} />
           </div>
         </button>
-      </div>
-      {/* <div className="animation-container"></div>
-      <Game /> */}
+      </div> */}
     </div>
   );
 }

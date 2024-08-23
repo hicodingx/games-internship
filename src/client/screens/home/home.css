@@ -15,6 +15,37 @@
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.app-container.settings {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setting-img-container {
+  border: 1px solid chartreuse;
+  margin-bottom: 50px;
+}
+
+.setting-img {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 570px) {
+  .setting-img-container {
+    border: none;
+    padding-left: 150px;
+  }
+  .setting-img {
+    width: 300px;
+  }
+}
+.setting-text {
+  text-align: center;
+  font-size: 1.2rem;
+}
 h1 {
   font-size: 24px;
 }
