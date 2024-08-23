@@ -1,9 +1,15 @@
 // Game.js
-import React from "react";
+import React, { useEffect } from "react";
 import Board from "../board/Board";
 import "./morpionApp.css";
+import { useNavigate } from "react-router-dom";
 
 const MorpionApp = () => {
+  // Deactivation
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/");
+  }, []);
   return (
     <div className="game-container">
       <header className="game-header">

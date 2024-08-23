@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MemoBoard from "../MemoBoard/MemoBoard";
 import "./memoApp.css";
+import { useNavigate } from "react-router-dom";
 
 function MemoApp() {
   const [cards, setCards] = useState([]);
@@ -14,12 +15,19 @@ function MemoApp() {
   const [isStarted, setIsStarted] = useState(false);
   const [end, setEnd] = useState(false);
 
+  const navigate = useNavigate();
+
   // useEffect(() => {
   //   const processGame = () => {
   //     initializeGame();
   //   };
   //   isStarted && processGame;
   // }, [isStarted]);
+
+  // Deactivation
+  useEffect(() => {
+    navigate("/");
+  }, []);
 
   useEffect(() => {
     if (flippedIndices.length === 2) {
