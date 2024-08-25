@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 const MorpionApp = () => {
   // Deactivation
-  const navigate = useNavigate();
-  useEffect(() => {
-    navigate("/");
-  }, []);
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   navigate("/");
+  // }, []);
+  // end deactivation
   return (
     <div className="game-container">
       <header className="game-header">

@@ -25,9 +25,9 @@ function MemoApp() {
   // }, [isStarted]);
 
   // Deactivation
-  useEffect(() => {
-    navigate("/");
-  }, []);
+  // useEffect(() => {
+  //   navigate("/");
+  // }, []);
 
   useEffect(() => {
     if (flippedIndices.length === 2) {
