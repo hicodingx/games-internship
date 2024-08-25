@@ -26,9 +26,9 @@ export default function Home() {
   //   }
   // }, []);
   return (
-    <div className="app-container settings">
+    <div className="app-container">
       {/* Déactivation code  */}
-      <div className="settings-container">
+      {/* <div className="settings-container">
         <div className="setting-img-container">
           <img className="setting-img" src="./rs.gif" alt="settings" />
         </div>
@@ -38,9 +38,10 @@ export default function Home() {
           <br />
           La maintenance sera à terme dans quelques secondes.
         </div>
-      </div>
+      </div> */}
+      {/* end deactivation code */}
 
-      {/* <Modal />
+      <Modal />
 
       <div className="h-container">
         <div className="ms-container">
@@ -86,10 +87,10 @@ export default function Home() {
                   .pauseFor(250)
                   .deleteAll(10)
                   .typeString(
-                    '<p style="color: #27ae60;  fontSize: 24; font-weight: 600" > Jouer ici des jeux qui entraînent votre mémoire, </p>'
+                    '<p style="color: purple;  fontSize: 24; font-weight: 500" > Jouer ici des jeux qui entraînent votre  mémoire, </p>'
                   )
                   .typeString(
-                    '<p> Je suis <span style="color: coral;"> Nadège ATINDEHOU </span> et je serai votre <span style="color: #27ae60; display: inline-block;">adversaire par défaut </span>  </p>'
+                    '<p> Je suis <span style="color: coral;"> Nadège ATINDEHOU </span> et je serai votre <span style="color: #27ae60; display: inline-block;">adversaire  </span> par défaut  </p>'
                   )
                   .pauseFor(500)
                   .start();
@@ -117,7 +118,7 @@ export default function Home() {
             <IoPlayForward size={20} />
           </div>
         </button>
-      </div> */}
+      </div>
     </div>
   );
 }
